@@ -1,9 +1,18 @@
 import streamlit as st
 import pickle
 import numpy as np
-pipeline = pickle.load(open('pipeline.pkl','rb'))
+import os
+import streamlit as st
+if os.path.exists('pipeline.pkl'):
+    with open('pipeline.pkl', 'rb') as file:
+        pipeline = pickle.load(file)
+else:
+    st.error("File 'pipeline.pkl' not found.")
+    pipeline = None
+
+#pipeline = pickle.load(open('pipeline.pkl','rb'))
 Data = pickle.load(open('Data.pkl','rb'))
-st.title('LAPTOP PREDICTOR')
+st.title('LAPTOP PRICE PREDICTOR')
 Company = st.selectbox('BRAND',Data['Company'].unique())
 Type = st.selectbox('TYPE',Data['TypeName'].unique())
 Ram = st.selectbox('RAM(GB)',Data['Ram'].unique())
