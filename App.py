@@ -1,5 +1,6 @@
 import streamlit as st
 import pickle
+import numpy as np
 pipeline = pickle.load(open('pipeline.pkl','rb'))
 Data = pickle.load(open('Data.pkl','rb'))
 st.title('LAPTOP PRICE PREDICTOR')
